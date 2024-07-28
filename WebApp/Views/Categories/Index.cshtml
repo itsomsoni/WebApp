@@ -1,0 +1,40 @@
+﻿@model List<CategoriesModel>
+
+@section title {
+    <h1>Categories</h1>
+}
+
+@* <ul>
+    @foreach (var _model in Model)
+    {
+        <li>
+            <a href="Categories/Edit/@_model.CategoryId">@_model.CategoryName</a>
+        </li>
+    }
+</ul> *@
+
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td class="text-center">Category</td>
+                <td class="text-center">Description</td>
+                <td class="text-center">Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@data.CategoryName</td>
+                    <td>@data.CategoryDescription</td>
+                    <td class="text-center">
+                        <a class="btn btn-warning" asp-controller="Categories" asp-action="Edit" asp-route-id="@data.CategoryId">Edit</a>
+                        @* href="@($"Categories/Edit/{data.CategoryId}")" *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
