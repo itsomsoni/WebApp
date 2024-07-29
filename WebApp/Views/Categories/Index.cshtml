@@ -1,7 +1,8 @@
 ﻿@model List<CategoriesModel>
 
 @section title {
-    <h1>Categories</h1>
+    <h1 class="float-sm-start">Categories</h1>
+    <a asp-controller="Categories" asp-action="AddNew" class="float-end btn btn-primary">Add New</a>
 }
 
 @* <ul>
@@ -31,10 +32,19 @@
                     <td>@data.CategoryDescription</td>
                     <td class="text-center">
                         <a class="btn btn-warning" asp-controller="Categories" asp-action="Edit" asp-route-id="@data.CategoryId">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Categories" asp-action="Delete" asp-route-CategoryId="@data.CategoryId"
+                           onclick="return ConfirmDelete();">Delete</a>
                         @* href="@($"Categories/Edit/{data.CategoryId}")" *@
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+    @section Scripts {
+    <script type="text/javascript">
+        function ConfirmDelete() {
+            return confirm("Are You Sure Want To Delete This Category?");
+        }
+    </script>
+    }
 }

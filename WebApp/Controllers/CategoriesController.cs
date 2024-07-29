@@ -13,6 +13,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Action = nameof(Edit);
             var Data = CategoriesRepo.GetCategoriesById(id);
 
             return View(Data);
@@ -27,6 +28,30 @@ namespace WebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
+        }
+        public IActionResult Add()
+        {
+            ViewBag.Action = nameof(Add);
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(CategoriesModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                CategoriesRepo.AddCategories(model);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+        public IActionResult Delete(int CategoryId)
+        {
+            CategoriesRepo.DeleteCategories(CategoryId);
+            return Redirect(nameof(Index));
+        }
+        public IActionResult AddNew()
+        {
+            return RedirectToAction(nameof(Add));
         }
     }
 }
