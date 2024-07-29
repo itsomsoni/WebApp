@@ -1,0 +1,45 @@
+﻿@model StudentModel
+@{
+    string _action = ViewBag.Action ?? string.Empty;
+}
+<form method="post" asp-controller="Student" asp-action="@_action">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="float-start">Student Details</h3>
+            <a class="float-end btn btn-secondary" asp-controller="Student" asp-action="Index">Back To List</a>
+        </div>
+        <div class="card-body">
+            @if (_action == "EditStudent")
+            {
+                <input type="hidden" asp-for="StudentId" />
+            }
+            <div class="row">
+                <div class="col-md-3 mb-1">
+                    <label asp-for="StudentName" class="fw-bold"></label>
+                    <input type="text" class="form-control" asp-for="StudentName" autocomplete="off" />
+                    <span class="text-danger" asp-validation-for="StudentName"></span>
+                </div>
+                <div class="col-md-3 mb-1">
+                    <label asp-for="StudentEmail" class="fw-bold"></label>
+                    <input type="email" class="form-control" asp-for="StudentEmail" autocomplete="off" />
+                    <span class="text-danger" asp-validation-for="StudentEmail"></span>
+                </div>
+                <div class="col-md-3 mb-1">
+                    <label asp-for="StudentPhone" class="fw-bold"></label>
+                    <input type="text" class="form-control" asp-for="StudentPhone" autocomplete="off" />
+                    <span class="text-danger" asp-validation-for="StudentPhone"></span>
+                </div>
+                <div class="col-md-3 mb-1">
+                    <label asp-for="StudentAddress" class="fw-bold"></label>
+                    <input type="text" class="form-control" asp-for="StudentAddress" autocomplete="off" />
+                    <span class="text-danger" asp-validation-for="StudentAddress"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <input type="submit" class="btn btn-success mt-2" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

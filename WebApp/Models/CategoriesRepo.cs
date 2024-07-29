@@ -4,9 +4,9 @@
     {
         public static List<CategoriesModel> _categories = new List<CategoriesModel>()
         {
-            new CategoriesModel() {CategoryId = 1, CategoryName = "Beverages", CategoryDescription = "Beverages"},
-            new CategoriesModel() {CategoryId = 2, CategoryName = "Bakery", CategoryDescription = "Bakery" },
-            new CategoriesModel() {CategoryId = 3, CategoryName = "Snacks", CategoryDescription = "Snacks" }
+            new() {CategoryId = 1, CategoryName = "Beverages", CategoryDescription = "Beverages"},
+            new() {CategoryId = 2, CategoryName = "Bakery", CategoryDescription = "Bakery" },
+            new() {CategoryId = 3, CategoryName = "Snacks", CategoryDescription = "Snacks" }
         };
         public static void AddCategories(CategoriesModel model)
         {

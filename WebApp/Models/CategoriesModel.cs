@@ -7,9 +7,9 @@ namespace WebApp.Models
     {
         public int CategoryId { get; set; }
 
-        [Required, Display(Name = "Category Name"), StringLength(100)]
+        [Required, Display(Name = "Category Name"), StringLength(100), MinLength(4, ErrorMessage = "{0} Should Be Minimum Of {1} Length."), MaxLength(100)]
         public string CategoryName { get; set; } = string.Empty;
-        [ValidateNever, Display(Name = "Category Description")]
+        [Required, Display(Name = "Category Description")]
         public string CategoryDescription { get; set; } = string.Empty;
     }
 }
