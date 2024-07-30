@@ -1,5 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<StudentContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("localDB")));
+
 var app = builder.Build();
 
 app.UseStaticFiles();
