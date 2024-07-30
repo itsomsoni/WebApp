@@ -5,8 +5,8 @@ namespace WebApp.Controllers
 {
     public class StudentController : Controller
     {
-        private StudentContext _studentContext;
-        public StudentController(StudentContext studentContext)
+        private MyDBContext _studentContext;
+        public StudentController(MyDBContext studentContext)
         {
             _studentContext = studentContext;
         }
